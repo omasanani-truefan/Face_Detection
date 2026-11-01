@@ -1,0 +1,716 @@
+{
+ "browser": "Chrome/156.0.8078.74",
+ "headless": true,
+ "environment": {
+  "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) HeadlessChrome/156.0.0.0 Safari/537.36",
+  "hardwareConcurrency": 16,
+  "crossOriginIsolated": true,
+  "webgpu": "adapter: intel gen-12lp"
+ },
+ "protocol": {
+  "warmup": 10,
+  "timed": 100
+ },
+ "results": [
+  {
+   "config": "yunet@640 wasm 480p",
+   "detector": "yunet",
+   "inputLongSide": 640,
+   "execution": "wasm",
+   "resolution": "480p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 767.125,
+   "load_ms": 716.679999999702,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 5.333850000016391,
+    "p50_ms": 5.170000001788139,
+    "p95_ms": 7.280000001192093,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 14.541799999773502,
+    "p50_ms": 13.42000000178814,
+    "p95_ms": 21.99500000104308,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.11730000019073486,
+    "p50_ms": 0.11000000312924385,
+    "p95_ms": 0.1899999976158142,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 21.238449999950827,
+    "p50_ms": 19.690000001341105,
+    "p95_ms": 29.724999997764826,
+    "n": 100
+   }
+  },
+  {
+   "config": "yunet@640 webgpu 480p",
+   "detector": "yunet",
+   "inputLongSide": 640,
+   "execution": "webgpu",
+   "resolution": "480p",
+   "execution_used": "webgpu",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 419.25,
+   "load_ms": 383.4400000013411,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 2.397750000171363,
+    "p50_ms": 2.280000001192093,
+    "p95_ms": 3.255000002682209,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 52.686349999792874,
+    "p50_ms": 51.03000000119209,
+    "p95_ms": 63.96999999880791,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.06740000016987324,
+    "p50_ms": 0.06499999761581421,
+    "p95_ms": 0.10500000044703484,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 55.72245000008493,
+    "p50_ms": 54.33500000089407,
+    "p95_ms": 67.62000000104308,
+    "n": 100
+   }
+  },
+  {
+   "config": "yunet@320 wasm 480p",
+   "detector": "yunet",
+   "inputLongSide": 320,
+   "execution": "wasm",
+   "resolution": "480p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 182.089999999851,
+   "load_ms": 168.035000000149,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 3.226149999946356,
+    "p50_ms": 2.9299999997019768,
+    "p95_ms": 5.2650000005960464,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 5.440899999924004,
+    "p50_ms": 5.149999998509884,
+    "p95_ms": 7.53999999910593,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.06375000018626452,
+    "p50_ms": 0.05999999865889549,
+    "p95_ms": 0.12000000104308128,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 9.943250000029803,
+    "p50_ms": 9.494999997317791,
+    "p95_ms": 14.434999998658895,
+    "n": 100
+   }
+  },
+  {
+   "config": "scrfd_500m_kps@640 wasm 480p",
+   "detector": "scrfd_500m_kps",
+   "inputLongSide": 640,
+   "execution": "wasm",
+   "resolution": "480p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 408.875,
+   "load_ms": 384.9400000013411,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 6.124999999925494,
+    "p50_ms": 6.384999997913837,
+    "p95_ms": 7.9849999994039536,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 37.06349999997765,
+    "p50_ms": 35.774999998509884,
+    "p95_ms": 45.33999999985099,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.10940000019967556,
+    "p50_ms": 0.10500000044703484,
+    "p95_ms": 0.1850000023841858,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 44.89420000001788,
+    "p50_ms": 43.16999999806285,
+    "p95_ms": 56.07500000298023,
+    "n": 100
+   }
+  },
+  {
+   "config": "scrfd_500m_kps@640 webgpu 480p",
+   "detector": "scrfd_500m_kps",
+   "inputLongSide": 640,
+   "execution": "webgpu",
+   "resolution": "480p",
+   "execution_used": "webgpu",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 293.41999999806285,
+   "load_ms": 271.4049999974668,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 4.642699999734759,
+    "p50_ms": 4.879999998956919,
+    "p95_ms": 5.83500000089407,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 48.995500000305476,
+    "p50_ms": 46.46999999880791,
+    "p95_ms": 64.16499999910593,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.06759999964386225,
+    "p50_ms": 0.06500000134110451,
+    "p95_ms": 0.11000000312924385,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 54.3967499999702,
+    "p50_ms": 52.08500000089407,
+    "p95_ms": 69.19500000029802,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_short@native cpu 480p",
+   "detector": "mediapipe_short",
+   "inputLongSide": null,
+   "execution": "cpu",
+   "resolution": "480p",
+   "execution_used": "MediaPipe CPU (wasm)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 614.0500000007451,
+   "load_ms": 605.1299999989569,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 6.407000000067055,
+    "p50_ms": 6.280000001192093,
+    "p95_ms": 7.199999999254942,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.006849999949336052,
+    "p50_ms": 0.005000002682209015,
+    "p95_ms": 0.010000001639127731,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 7.061849999986589,
+    "p50_ms": 6.945000000298023,
+    "p95_ms": 7.864999998360872,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_short@native gpu 480p",
+   "detector": "mediapipe_short",
+   "inputLongSide": null,
+   "execution": "gpu",
+   "resolution": "480p",
+   "execution_used": "MediaPipe GPU delegate (WebGL)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 184.84999999776483,
+   "load_ms": 176.2550000026822,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 7.589750000089407,
+    "p50_ms": 7.53999999910593,
+    "p95_ms": 8.265000000596046,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.007000000029802322,
+    "p50_ms": 0.005000002682209015,
+    "p95_ms": 0.010000001639127731,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 8.227100000306963,
+    "p50_ms": 8.195000000298023,
+    "p95_ms": 9.220000002533197,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_full@native cpu 480p",
+   "detector": "mediapipe_full",
+   "inputLongSide": null,
+   "execution": "cpu",
+   "resolution": "480p",
+   "execution_used": "MediaPipe CPU (wasm)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 231.87000000104308,
+   "load_ms": 223.9949999973178,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 14.685449999831617,
+    "p50_ms": 14.495000001043081,
+    "p95_ms": 16.66500000283122,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.008700000196695328,
+    "p50_ms": 0.009999997913837433,
+    "p95_ms": 0.015000000596046448,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 15.396249999850989,
+    "p50_ms": 15.229999996721745,
+    "p95_ms": 17.41999999806285,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_full@native gpu 480p",
+   "detector": "mediapipe_full",
+   "inputLongSide": null,
+   "execution": "gpu",
+   "resolution": "480p",
+   "execution_used": "MediaPipe GPU delegate (WebGL)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 164.7550000026822,
+   "load_ms": 154.4699999988079,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 11.508199999816716,
+    "p50_ms": 12.410000000149012,
+    "p95_ms": 13.689999997615814,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.006900000013411045,
+    "p50_ms": 0.005000002682209015,
+    "p95_ms": 0.010000001639127731,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 12.130800000056624,
+    "p50_ms": 13.005000002682209,
+    "p95_ms": 14.32999999821186,
+    "n": 100
+   }
+  },
+  {
+   "config": "yunet@640 wasm 720p",
+   "detector": "yunet",
+   "inputLongSide": 640,
+   "execution": "wasm",
+   "resolution": "720p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 572.0049999989569,
+   "load_ms": 556.054999999702,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 8.370100000016391,
+    "p50_ms": 7.699999999254942,
+    "p95_ms": 12.45499999821186,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 12.196449999958277,
+    "p50_ms": 11.07999999821186,
+    "p95_ms": 16.690000001341105,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.10409999996423722,
+    "p50_ms": 0.0950000025331974,
+    "p95_ms": 0.17000000178813934,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 22.297999999932944,
+    "p50_ms": 21.269999999552965,
+    "p95_ms": 32.725000001490116,
+    "n": 100
+   }
+  },
+  {
+   "config": "yunet@640 webgpu 720p",
+   "detector": "yunet",
+   "inputLongSide": 640,
+   "execution": "webgpu",
+   "resolution": "720p",
+   "execution_used": "webgpu",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 390.4349999986589,
+   "load_ms": 370.0349999964237,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 5.620249999836087,
+    "p50_ms": 5.6099999994039536,
+    "p95_ms": 6.8099999986588955,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 50.03484999991954,
+    "p50_ms": 49.50500000268221,
+    "p95_ms": 57.349999997764826,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.05935000002384186,
+    "p50_ms": 0.054999999701976776,
+    "p95_ms": 0.10500000044703484,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 56.76,
+    "p50_ms": 55.94999999925494,
+    "p95_ms": 64.14499999955297,
+    "n": 100
+   }
+  },
+  {
+   "config": "yunet@320 wasm 720p",
+   "detector": "yunet",
+   "inputLongSide": 320,
+   "execution": "wasm",
+   "resolution": "720p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 180.91500000283122,
+   "load_ms": 167.25,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 3.0344500002264976,
+    "p50_ms": 2.7650000005960464,
+    "p95_ms": 4.800000000745058,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 4.1731499998644,
+    "p50_ms": 3.889999996870756,
+    "p95_ms": 5.83500000089407,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.06030000008642673,
+    "p50_ms": 0.054999999701976776,
+    "p95_ms": 0.13500000163912773,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 8.887250000089407,
+    "p50_ms": 8.640000000596046,
+    "p95_ms": 12.184999998658895,
+    "n": 100
+   }
+  },
+  {
+   "config": "scrfd_500m_kps@640 wasm 720p",
+   "detector": "scrfd_500m_kps",
+   "inputLongSide": 640,
+   "execution": "wasm",
+   "resolution": "720p",
+   "execution_used": "wasm (4 threads)",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 232.48000000044703,
+   "load_ms": 211.39499999955297,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 11.91089999999851,
+    "p50_ms": 11.599999997764826,
+    "p95_ms": 18.054999999701977,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 30.85940000012517,
+    "p50_ms": 30.61999999731779,
+    "p95_ms": 38.41000000014901,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.09654999993741513,
+    "p50_ms": 0.08500000089406967,
+    "p95_ms": 0.16500000283122063,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 45.33084999997169,
+    "p50_ms": 44.59499999880791,
+    "p95_ms": 58.53500000014901,
+    "n": 100
+   }
+  },
+  {
+   "config": "scrfd_500m_kps@640 webgpu 720p",
+   "detector": "scrfd_500m_kps",
+   "inputLongSide": 640,
+   "execution": "webgpu",
+   "resolution": "720p",
+   "execution_used": "webgpu",
+   "runtime": "onnxruntime-web 1.30.0",
+   "startup_ms": 284.60499999672174,
+   "load_ms": 257.85999999940395,
+   "stages_fused": false,
+   "preprocess": {
+    "mean_ms": 7.460650000162422,
+    "p50_ms": 7.5599999986588955,
+    "p95_ms": 9.365000002086163,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 44.85034999988973,
+    "p50_ms": 43.775000002235174,
+    "p95_ms": 50.85999999940395,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.06175000000745058,
+    "p50_ms": 0.05999999865889549,
+    "p95_ms": 0.10500000044703484,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 53.715099999681115,
+    "p50_ms": 53.30000000074506,
+    "p95_ms": 59.309999998658895,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_short@native cpu 720p",
+   "detector": "mediapipe_short",
+   "inputLongSide": null,
+   "execution": "cpu",
+   "resolution": "720p",
+   "execution_used": "MediaPipe CPU (wasm)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 153.44999999925494,
+   "load_ms": 145.67999999970198,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 8.88260000001639,
+    "p50_ms": 8.79500000178814,
+    "p95_ms": 9.744999997317791,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.007099999971687794,
+    "p50_ms": 0.005000002682209015,
+    "p95_ms": 0.01499999687075615,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 10.15214999988675,
+    "p50_ms": 10.094999998807907,
+    "p95_ms": 11.019999999552965,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_short@native gpu 720p",
+   "detector": "mediapipe_short",
+   "inputLongSide": null,
+   "execution": "gpu",
+   "resolution": "720p",
+   "execution_used": "MediaPipe GPU delegate (WebGL)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 166.26499999687076,
+   "load_ms": 152.07000000029802,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 8.24280000001192,
+    "p50_ms": 8.179999999701977,
+    "p95_ms": 9.280000001192093,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.007049999833106994,
+    "p50_ms": 0.004999998956918716,
+    "p95_ms": 0.015000000596046448,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 9.561650000065566,
+    "p50_ms": 9.474999997764826,
+    "p95_ms": 10.679999999701977,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_full@native cpu 720p",
+   "detector": "mediapipe_full",
+   "inputLongSide": null,
+   "execution": "cpu",
+   "resolution": "720p",
+   "execution_used": "MediaPipe CPU (wasm)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 164.74500000104308,
+   "load_ms": 157.08500000089407,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 16.513750000186263,
+    "p50_ms": 16.429999999701977,
+    "p95_ms": 18.449999999254942,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.0076999996602535245,
+    "p50_ms": 0.009999997913837433,
+    "p95_ms": 0.010000001639127731,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 17.831550000086427,
+    "p50_ms": 17.74500000104308,
+    "p95_ms": 19.860000003129244,
+    "n": 100
+   }
+  },
+  {
+   "config": "mediapipe_full@native gpu 720p",
+   "detector": "mediapipe_full",
+   "inputLongSide": null,
+   "execution": "gpu",
+   "resolution": "720p",
+   "execution_used": "MediaPipe GPU delegate (WebGL)",
+   "runtime": "@mediapipe/tasks-vision",
+   "startup_ms": 173.76000000163913,
+   "load_ms": 165.8800000026822,
+   "stages_fused": true,
+   "preprocess": {
+    "mean_ms": 0,
+    "p50_ms": 0,
+    "p95_ms": 0,
+    "n": 100
+   },
+   "inference": {
+    "mean_ms": 13.674450000002981,
+    "p50_ms": 14.229999996721745,
+    "p95_ms": 17.109999999403954,
+    "n": 100
+   },
+   "postprocess": {
+    "mean_ms": 0.007349999696016312,
+    "p50_ms": 0.005000002682209015,
+    "p95_ms": 0.010000001639127731,
+    "n": 100
+   },
+   "end_to_end_incl_transfer": {
+    "mean_ms": 15.016850000284613,
+    "p50_ms": 15.489999998360872,
+    "p95_ms": 18.640000000596046,
+    "n": 100
+   }
+  }
+ ],
+ "console": [
+  "[error] \u001b[0;93m2026-11-01 03:41:58.745623 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,1} does not match actual shape of {480,1} for output 493\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746029 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,10} does not match actual shape of {1920,10} for output 474\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746213 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,4} does not match actual shape of {1920,4} for output 471\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746383 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,1} does not match actual shape of {1920,1} for output 468\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746644 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,10} does not match actual shape of {7680,10} for output 449\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746814 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,4} does not match actual shape of {7680,4} for output 446\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.746993 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,1} does not match actual shape of {7680,1} for output 443\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.804728 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,10} does not match actual shape of {480,10} for output 499\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.805123 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,4} does not match actual shape of {480,4} for output 496\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.805378 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,1} does not match actual shape of {480,1} for output 493\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.805954 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,10} does not match actual shape of {1920,10} for output 474\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.806324 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,4} does not match actual shape of {1920,4} for output 471\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.806648 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,1} does not match actual shape of {1920,1} for output 468\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.807154 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,10} does not match actual shape of {7680,10} for output 449\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.807444 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,4} does not match actual shape of {7680,4} for output 446\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.807689 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,1} does not match actual shape of {7680,1} for output 443\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.867908 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,10} does not match actual shape of {480,10} for output 499\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.868513 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,4} does not match actual shape of {480,4} for output 496\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.869099 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,1} does not match actual shape of {480,1} for output 493\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.869688 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,10} does not match actual shape of {1920,10} for output 474\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.869993 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,4} does not match actual shape of {1920,4} for output 471\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.870208 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,1} does not match actual shape of {1920,1} for output 468\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.870563 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,10} does not match actual shape of {7680,10} for output 449\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.870814 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,4} does not match actual shape of {7680,4} for output 446\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.871029 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,1} does not match actual shape of {7680,1} for output 443\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.924094 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,10} does not match actual shape of {480,10} for output 499\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.924538 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,4} does not match actual shape of {480,4} for output 496\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.924769 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {800,1} does not match actual shape of {480,1} for output 493\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.925344 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,10} does not match actual shape of {1920,10} for output 474\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.925623 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,4} does not match actual shape of {1920,4} for output 471\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.925874 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {3200,1} does not match actual shape of {1920,1} for output 468\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.926249 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,10} does not match actual shape of {7680,10} for output 449\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.926644 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,4} does not match actual shape of {7680,4} for output 446\u001b[m",
+  "[error] \u001b[0;93m2026-11-01 03:41:58.927023 [W:onnxruntime:, execution_frame.cc:905 VerifyOutputSizes] Expected shape from model of {12800,1} does not match actual shape of {7680,1} for output 443\u001b[m",
+  "[log] I1031 22:11:59.120999 2191552 gl_context.cc:408] GL version: 3.0 (OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))), renderer: WebKit WebGL",
+  "[warn] W1031 22:11:59.123000 2191552 gl_context.cc:1135] OpenGL error checking is disabled",
+  "[log] Graph successfully started running.",
+  "[error] INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+  "[warn] W1031 22:11:59.156000 2191552 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.",
+  "[log] I1031 22:12:00.486000 2191552 gl_context.cc:408] GL version: 3.0 (OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))), renderer: WebKit WebGL",
+  "[warn] W1031 22:12:00.488000 2191552 gl_context.cc:1135] OpenGL error checking is disabled",
+  "[log] Graph successfully started running.",
+  "[log] I1031 22:12:01.876000 2191552 gl_context.cc:408] GL version: 3.0 (OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))), renderer: WebKit WebGL",
+  "[warn] W1031 22:12:01.876999 2191552 gl_context.cc:1135] OpenGL error checking is disabled",
+  "[log] Graph successfully started running.",
+  "[error] INFO: Created TensorFlow Lite XNNPACK delegate for CPU.",
+  "[warn] W1031 22:12:01.915000 2191552 inference_feedback_manager.cc:121] Feedback manager requires a model with a single signature inference. Disabling support for feedback tensors.",
+  "[log] I1031 22:12:04.100999 2191552 gl_context.cc:408] GL version: 3.0 (OpenGL ES 3.0 (WebGL 2.0 (OpenGL ES 3.0 Chromium))), renderer: WebKit WebGL",
+  "[warn] W1031 22:12:04.103000 2191552 gl_context.cc:1135] OpenGL error checking is disabled",
+  "[log] Graph successfully started running."
+ ]
+}

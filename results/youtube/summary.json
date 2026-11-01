@@ -1,0 +1,1298 @@
+{
+ "environment": {
+  "cpu": "12th Gen Intel(R) Core(TM) i7-12650H",
+  "physical_cores": 10,
+  "logical_cores": 16,
+  "ram_gb": 15.7,
+  "os": "Windows 10 (10.0.26300)",
+  "python": "3.10.0",
+  "packages": {
+   "opencv-python": "5.0.0.93",
+   "onnxruntime": "1.23.2",
+   "mediapipe": "1.2.0",
+   "numpy": "2.2.6",
+   "scipy": "1.15.3",
+   "pycocotools": "2.0.11"
+  },
+  "accelerator": "none (CPU execution providers only)",
+  "power_plugged": true
+ },
+ "protocol": {
+  "max_frames": 900,
+  "max_height": 720,
+  "detector_floor": 0.3,
+  "tracker_config": {
+   "det_threshold": 0.6,
+   "low_det_threshold": 0.3,
+   "min_hits": 3,
+   "tentative_timeout_ms": 300,
+   "max_lost_ms": 1000,
+   "iou_threshold": 0.3,
+   "low_iou_threshold": 0.5,
+   "center_distance_threshold": 0.6,
+   "ref_frame_ms": 33.333
+  },
+  "reference": "SCRFD-10G @native (reference)",
+  "reference_threshold": 0.6,
+  "reference_stride": 3,
+  "note": "no human ground truth; agreement is a proxy against a heavy detector"
+ },
+ "videos": {
+  "YzcawvDGe4Y": {
+   "url": "https://www.youtube.com/watch?v=YzcawvDGe4Y",
+   "title": "People Walking Free Stock Footage, Royalty-Free No Copyright Content",
+   "channel": "Montreal Walking Tours",
+   "duration_s": 117,
+   "stream": {
+    "width": 1280,
+    "height": 720,
+    "fps": 29.97002997002997,
+    "codec": "h264"
+   },
+   "frames_used": 900,
+   "seconds_used": 29.996633333333335,
+   "detectors": {
+    "YuNet @640": {
+     "end_to_end": {
+      "mean_ms": 4.7471878888205135,
+      "p50_ms": 4.650499999115709,
+      "p95_ms": 5.33633000413829,
+      "p99_ms": 7.733704000493161,
+      "min_ms": 3.668000004836358,
+      "max_ms": 25.964300002669916,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 2.2942683332803426,
+      "p50_ms": 2.2419499982788693,
+      "p95_ms": 2.634670001498307,
+      "p99_ms": 3.096448997312108,
+      "min_ms": 1.724000001559034,
+      "max_ms": 19.688699998368975,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 3.2888888888888888,
+     "frames_with_face": 0.9611111111111111,
+     "max_fps": 210.65102612748282,
+     "agreement": {
+      "precision_vs_ref": 0.8511722731906218,
+      "recall_vs_ref": 0.5015015015015015,
+      "f1_vs_ref": 0.6311413454270598,
+      "ref_faces": 1665,
+      "recall_<24px": 0.25101214574898784,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.863013698630137,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 1.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 126,
+       "confirmed_tracks": 83,
+       "mean_visible": 3.042222222222222,
+       "median_life_s": 0.8341666666666678,
+       "share_under_1s": 0.5421686746987951,
+       "ms_per_frame": 0.3097144444473088
+      },
+      "sort": {
+       "ids_issued": 152,
+       "confirmed_tracks": 90,
+       "mean_visible": 3.0011111111111113,
+       "median_life_s": 0.6506500000000003,
+       "share_under_1s": 0.6444444444444445,
+       "ms_per_frame": 0.42036933332888615
+      },
+      "bytetrack": {
+       "ids_issued": 143,
+       "confirmed_tracks": 84,
+       "mean_visible": 3.738888888888889,
+       "median_life_s": 0.834166666666667,
+       "share_under_1s": 0.6071428571428571,
+       "ms_per_frame": 0.5471592222278964
+      }
+     }
+    },
+    "YuNet @native": {
+     "end_to_end": {
+      "mean_ms": 27.165727111003232,
+      "p50_ms": 23.070449999067932,
+      "p95_ms": 53.155330001391114,
+      "p99_ms": 94.27884299759171,
+      "min_ms": 14.648000003944617,
+      "max_ms": 235.68099999829428,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 14.740115999827847,
+      "p50_ms": 11.973499997111503,
+      "p95_ms": 29.66400999976029,
+      "p99_ms": 63.5667120028665,
+      "min_ms": 7.638299997779541,
+      "max_ms": 178.3013000022038,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.7877777777777775,
+     "frames_with_face": 0.9944444444444445,
+     "max_fps": 36.81108905768839,
+     "agreement": {
+      "precision_vs_ref": 0.7935595169637722,
+      "recall_vs_ref": 0.8288288288288288,
+      "f1_vs_ref": 0.8108108108108107,
+      "ref_faces": 1665,
+      "recall_<24px": 0.7307692307692307,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.9710806697108066,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 1.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 206,
+       "confirmed_tracks": 149,
+       "mean_visible": 5.3677777777777775,
+       "median_life_s": 0.8675333333333328,
+       "share_under_1s": 0.5973154362416108,
+       "ms_per_frame": 0.24720700000115256
+      },
+      "sort": {
+       "ids_issued": 236,
+       "confirmed_tracks": 163,
+       "mean_visible": 5.318888888888889,
+       "median_life_s": 0.7340666666666666,
+       "share_under_1s": 0.656441717791411,
+       "ms_per_frame": 0.6390276666691838
+      },
+      "bytetrack": {
+       "ids_issued": 235,
+       "confirmed_tracks": 144,
+       "mean_visible": 6.342222222222222,
+       "median_life_s": 0.8675333333333328,
+       "share_under_1s": 0.5833333333333334,
+       "ms_per_frame": 0.8638575555556195
+      }
+     }
+    },
+    "YuNet int8 @640": {
+     "end_to_end": {
+      "mean_ms": 25.404527333222276,
+      "p50_ms": 23.982599999726517,
+      "p95_ms": 31.692364996342803,
+      "p99_ms": 64.65868100101942,
+      "min_ms": 20.012700006191153,
+      "max_ms": 125.00739999813959,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 22.18200866673821,
+      "p50_ms": 20.870150001428556,
+      "p95_ms": 27.692745001331783,
+      "p99_ms": 53.84099199647601,
+      "min_ms": 17.259100000956096,
+      "max_ms": 120.65480000455864,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 3.3333333333333335,
+     "frames_with_face": 0.96,
+     "max_fps": 39.36306261019348,
+     "agreement": {
+      "precision_vs_ref": 0.8499496475327291,
+      "recall_vs_ref": 0.5069069069069069,
+      "f1_vs_ref": 0.6350639578630549,
+      "ref_faces": 1665,
+      "recall_<24px": 0.2550607287449393,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.8706240487062404,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 1.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 124,
+       "confirmed_tracks": 85,
+       "mean_visible": 3.0855555555555556,
+       "median_life_s": 0.8007999999999993,
+       "share_under_1s": 0.5882352941176471,
+       "ms_per_frame": 0.2066062222163762
+      },
+      "sort": {
+       "ids_issued": 141,
+       "confirmed_tracks": 90,
+       "mean_visible": 3.062222222222222,
+       "median_life_s": 0.6339666666666663,
+       "share_under_1s": 0.6444444444444445,
+       "ms_per_frame": 0.41754144444389063
+      },
+      "bytetrack": {
+       "ids_issued": 140,
+       "confirmed_tracks": 86,
+       "mean_visible": 3.712222222222222,
+       "median_life_s": 0.8675333333333328,
+       "share_under_1s": 0.5697674418604651,
+       "ms_per_frame": 0.5562501111126039
+      }
+     }
+    },
+    "YuNet OpenCV @640": {
+     "end_to_end": {
+      "mean_ms": 7.3792770000323396,
+      "p50_ms": 7.239300000946969,
+      "p95_ms": 8.32379999847035,
+      "p99_ms": 9.191145998120192,
+      "min_ms": 6.463300000177696,
+      "max_ms": 34.561200001917314,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 7.3792770000323396,
+      "p50_ms": 7.239300000946969,
+      "p95_ms": 8.32379999847035,
+      "p99_ms": 9.191145998120192,
+      "min_ms": 6.463300000177696,
+      "max_ms": 34.561200001917314,
+      "n": 900
+     },
+     "fused": true,
+     "faces_per_frame_mean": 3.2911111111111113,
+     "frames_with_face": 0.9611111111111111,
+     "max_fps": 135.51463103981834,
+     "agreement": {
+      "precision_vs_ref": 0.8511722731906218,
+      "recall_vs_ref": 0.5015015015015015,
+      "f1_vs_ref": 0.6311413454270598,
+      "ref_faces": 1665,
+      "recall_<24px": 0.25101214574898784,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.863013698630137,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 1.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 127,
+       "confirmed_tracks": 83,
+       "mean_visible": 3.0433333333333334,
+       "median_life_s": 0.8341666666666678,
+       "share_under_1s": 0.5421686746987951,
+       "ms_per_frame": 0.19262011111196545
+      },
+      "sort": {
+       "ids_issued": 153,
+       "confirmed_tracks": 90,
+       "mean_visible": 3.002222222222222,
+       "median_life_s": 0.6506500000000003,
+       "share_under_1s": 0.6444444444444445,
+       "ms_per_frame": 0.3914091111073503
+      },
+      "bytetrack": {
+       "ids_issued": 144,
+       "confirmed_tracks": 84,
+       "mean_visible": 3.7455555555555557,
+       "median_life_s": 0.834166666666667,
+       "share_under_1s": 0.6071428571428571,
+       "ms_per_frame": 0.5118176666696349
+      }
+     }
+    },
+    "SCRFD-500M @640": {
+     "end_to_end": {
+      "mean_ms": 6.577709222312681,
+      "p50_ms": 6.498450002254685,
+      "p95_ms": 7.388300005914061,
+      "p99_ms": 8.076652994059259,
+      "min_ms": 5.413899998529814,
+      "max_ms": 13.10380000359146,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 3.9172592220792364,
+      "p50_ms": 3.8654000018141232,
+      "p95_ms": 4.471615004513296,
+      "p99_ms": 4.863456000384757,
+      "min_ms": 3.1856999994488433,
+      "max_ms": 7.768299998133443,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 3.0877777777777777,
+     "frames_with_face": 0.9666666666666667,
+     "max_fps": 152.02861151232318,
+     "agreement": {
+      "precision_vs_ref": 0.9311475409836065,
+      "recall_vs_ref": 0.5117117117117117,
+      "f1_vs_ref": 0.6604651162790697,
+      "ref_faces": 1665,
+      "recall_<24px": 0.2834008097165992,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.8417047184170472,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 0.95,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 60,
+       "confirmed_tracks": 42,
+       "mean_visible": 1.9944444444444445,
+       "median_life_s": 1.1511499999999995,
+       "share_under_1s": 0.40476190476190477,
+       "ms_per_frame": 0.13486311111288765
+      },
+      "sort": {
+       "ids_issued": 63,
+       "confirmed_tracks": 41,
+       "mean_visible": 1.991111111111111,
+       "median_life_s": 1.001,
+       "share_under_1s": 0.4878048780487805,
+       "ms_per_frame": 0.22980744444390033
+      },
+      "bytetrack": {
+       "ids_issued": 62,
+       "confirmed_tracks": 40,
+       "mean_visible": 2.3855555555555554,
+       "median_life_s": 1.1177833333333327,
+       "share_under_1s": 0.425,
+       "ms_per_frame": 0.3898589999961486
+      }
+     }
+    },
+    "SCRFD-500M @native": {
+     "end_to_end": {
+      "mean_ms": 23.0013097777151,
+      "p50_ms": 22.818350000306964,
+      "p95_ms": 25.122379998356337,
+      "p99_ms": 26.393723000073805,
+      "min_ms": 20.35749999777181,
+      "max_ms": 37.04889999789884,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 14.012252888917121,
+      "p50_ms": 13.901599999371683,
+      "p95_ms": 15.417975001764717,
+      "p99_ms": 16.408735005388735,
+      "min_ms": 12.19660000060685,
+      "max_ms": 27.200900003663264,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.153333333333333,
+     "frames_with_face": 0.9933333333333333,
+     "max_fps": 43.47578506024268,
+     "agreement": {
+      "precision_vs_ref": 0.9264516129032258,
+      "recall_vs_ref": 0.8624624624624625,
+      "f1_vs_ref": 0.8933125972006221,
+      "ref_faces": 1665,
+      "recall_<24px": 0.7965587044534413,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.958904109589041,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 0.95,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 111,
+       "confirmed_tracks": 92,
+       "mean_visible": 3.8866666666666667,
+       "median_life_s": 0.9008999999999998,
+       "share_under_1s": 0.5217391304347826,
+       "ms_per_frame": 0.20844633332874057
+      },
+      "sort": {
+       "ids_issued": 110,
+       "confirmed_tracks": 88,
+       "mean_visible": 3.8922222222222222,
+       "median_life_s": 0.8174833333333349,
+       "share_under_1s": 0.5568181818181818,
+       "ms_per_frame": 0.42076388888138655
+      },
+      "bytetrack": {
+       "ids_issued": 105,
+       "confirmed_tracks": 86,
+       "mean_visible": 4.475555555555555,
+       "median_life_s": 1.0343666666666667,
+       "share_under_1s": 0.4883720930232558,
+       "ms_per_frame": 0.583560000005592
+      }
+     }
+    },
+    "BlazeFace short": {
+     "end_to_end": {
+      "mean_ms": 2.94401311109444,
+      "p50_ms": 2.9211500004748814,
+      "p95_ms": 3.309864998664125,
+      "p99_ms": 3.6182089979411094,
+      "min_ms": 2.419299999019131,
+      "max_ms": 5.432700003439095,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 1.8462001110148978,
+      "p50_ms": 1.8317499961995054,
+      "p95_ms": 2.098535000550328,
+      "p99_ms": 2.369999994771206,
+      "min_ms": 1.5086000057635829,
+      "max_ms": 4.342799998994451,
+      "n": 900
+     },
+     "fused": true,
+     "faces_per_frame_mean": 0.0044444444444444444,
+     "frames_with_face": 0.0044444444444444444,
+     "max_fps": 339.6724003135465,
+     "agreement": {
+      "precision_vs_ref": 0.0,
+      "recall_vs_ref": 0.0,
+      "f1_vs_ref": 0.0,
+      "ref_faces": 1665,
+      "recall_<24px": 0.0,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.0,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 0.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 1,
+       "confirmed_tracks": 0,
+       "mean_visible": 0.0,
+       "median_life_s": 0.0,
+       "share_under_1s": 0.0,
+       "ms_per_frame": 0.014237111115815222
+      },
+      "sort": {
+       "ids_issued": 1,
+       "confirmed_tracks": 0,
+       "mean_visible": 0.0,
+       "median_life_s": 0.0,
+       "share_under_1s": 0.0,
+       "ms_per_frame": 0.007180888892940452
+      },
+      "bytetrack": {
+       "ids_issued": 1,
+       "confirmed_tracks": 0,
+       "mean_visible": 0.0,
+       "median_life_s": 0.0,
+       "share_under_1s": 0.0,
+       "ms_per_frame": 0.02282155555601801
+      }
+     }
+    },
+    "BlazeFace full": {
+     "end_to_end": {
+      "mean_ms": 6.157850222055761,
+      "p50_ms": 6.0625500009336974,
+      "p95_ms": 6.909244998678331,
+      "p99_ms": 8.04537100077141,
+      "min_ms": 4.876300001342315,
+      "max_ms": 69.8227000029874,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 4.994738333367018,
+      "p50_ms": 4.891900000075111,
+      "p95_ms": 5.602960001851898,
+      "p99_ms": 6.555430002626962,
+      "min_ms": 3.9374999978463165,
+      "max_ms": 68.5352000000421,
+      "n": 900
+     },
+     "fused": true,
+     "faces_per_frame_mean": 0.3,
+     "frames_with_face": 0.27,
+     "max_fps": 162.39433632508133,
+     "agreement": {
+      "precision_vs_ref": 0.2604166666666667,
+      "recall_vs_ref": 0.015015015015015015,
+      "f1_vs_ref": 0.028392958546280524,
+      "ref_faces": 1665,
+      "recall_<24px": 0.0,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.0197869101978691,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 0.6,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 23,
+       "confirmed_tracks": 12,
+       "mean_visible": 0.06555555555555556,
+       "median_life_s": 0.10010000000000127,
+       "share_under_1s": 0.9166666666666666,
+       "ms_per_frame": 0.027869555552671146
+      },
+      "sort": {
+       "ids_issued": 21,
+       "confirmed_tracks": 11,
+       "mean_visible": 0.07,
+       "median_life_s": 0.10010000000000219,
+       "share_under_1s": 0.9090909090909091,
+       "ms_per_frame": 0.03106488888281294
+      },
+      "bytetrack": {
+       "ids_issued": 19,
+       "confirmed_tracks": 9,
+       "mean_visible": 0.16666666666666666,
+       "median_life_s": 0.33366666666666606,
+       "share_under_1s": 0.6666666666666666,
+       "ms_per_frame": 0.07694777777942363
+      }
+     }
+    },
+    "SCRFD-10G @640 (ResNet-class)": {
+     "end_to_end": {
+      "mean_ms": 46.02560833327718,
+      "p50_ms": 45.77209999843035,
+      "p95_ms": 49.254350001501734,
+      "p99_ms": 52.03691099755815,
+      "min_ms": 41.17540000152076,
+      "max_ms": 83.01080000092043,
+      "n": 900
+     },
+     "inference": {
+      "mean_ms": 42.959227777731336,
+      "p50_ms": 42.69354999996722,
+      "p95_ms": 46.05415499936498,
+      "p99_ms": 48.64564099705603,
+      "min_ms": 37.86810000019614,
+      "max_ms": 79.80849999876227,
+      "n": 900
+     },
+     "fused": false,
+     "faces_per_frame_mean": 3.9155555555555557,
+     "frames_with_face": 0.9922222222222222,
+     "max_fps": 21.72703493148586,
+     "agreement": {
+      "precision_vs_ref": 0.9546621043627032,
+      "recall_vs_ref": 0.6702702702702703,
+      "f1_vs_ref": 0.7875793930839803,
+      "ref_faces": 1665,
+      "recall_<24px": 0.4686234817813765,
+      "n_ref_<24px": 988,
+      "recall_24-64px": 0.9634703196347032,
+      "n_ref_24-64px": 657,
+      "recall_>=64px": 1.0,
+      "n_ref_>=64px": 20
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 87,
+       "confirmed_tracks": 72,
+       "mean_visible": 2.917777777777778,
+       "median_life_s": 1.0844166666666661,
+       "share_under_1s": 0.4722222222222222,
+       "ms_per_frame": 0.1767114444373874
+      },
+      "sort": {
+       "ids_issued": 87,
+       "confirmed_tracks": 74,
+       "mean_visible": 2.9166666666666665,
+       "median_life_s": 0.8341666666666687,
+       "share_under_1s": 0.5675675675675675,
+       "ms_per_frame": 0.3315768888892813
+      },
+      "bytetrack": {
+       "ids_issued": 84,
+       "confirmed_tracks": 68,
+       "mean_visible": 3.513333333333333,
+       "median_life_s": 1.2178833333333332,
+       "share_under_1s": 0.45588235294117646,
+       "ms_per_frame": 0.5016925555537455
+      }
+     }
+    }
+   },
+   "reference": {
+    "label": "SCRFD-10G @native (reference)",
+    "latency": {
+     "end_to_end": {
+      "mean_ms": 207.89472600001318,
+      "p50_ms": 198.82185000096797,
+      "p95_ms": 265.53538500556897,
+      "p99_ms": 324.45637700031506,
+      "min_ms": 174.88050000247313,
+      "max_ms": 487.40429999452317,
+      "n": 300
+     },
+     "inference": {
+      "mean_ms": 196.66214233332235,
+      "p50_ms": 187.79640000138897,
+      "p95_ms": 251.97785000382285,
+      "p99_ms": 310.7600669942621,
+      "min_ms": 165.06700000172714,
+      "max_ms": 475.4207999940263,
+      "n": 300
+     },
+     "fused": false
+    },
+    "frames": 300,
+    "faces_per_frame_mean": 5.55
+   },
+   "recognition_cost": {
+    "frames_sampled": 90,
+    "frames_with_faces": 90,
+    "faces_per_frame_mean": 5.811111111111111,
+    "faces_per_frame_p95": 9.0,
+    "faces_per_frame_max": 11,
+    "per_frame_ms": {
+     "arcface_r50": {
+      "mean_ms": 931.7512877773778,
+      "p50_ms": 913.5053499994683,
+      "p95_ms": 1239.0807549974852,
+      "p99_ms": 1318.2869349987595,
+      "min_ms": 340.37760000501294,
+      "max_ms": 1395.3150999950594,
+      "n": 90
+     },
+     "arcface_mbf": {
+      "mean_ms": 93.06962222253787,
+      "p50_ms": 79.28730000276119,
+      "p95_ms": 209.85188999802628,
+      "p99_ms": 226.8380800011073,
+      "min_ms": 7.883799997216556,
+      "max_ms": 240.16850000043632,
+      "n": 90
+     }
+    }
+   },
+   "grid_frame": 333
+  },
+  "5nGBIincOIo": {
+   "url": "https://www.youtube.com/watch?v=5nGBIincOIo",
+   "title": "The Bigger the Fandom, the Bigger the Selfie I OPPO F35 Series I Group Selfie Expert",
+   "channel": "OPPO India",
+   "duration_s": 30,
+   "stream": {
+    "width": 1280,
+    "height": 720,
+    "fps": 25.0,
+    "codec": "h264"
+   },
+   "frames_used": 750,
+   "seconds_used": 29.96,
+   "detectors": {
+    "YuNet @640": {
+     "end_to_end": {
+      "mean_ms": 5.822386000111389,
+      "p50_ms": 5.506599998625461,
+      "p95_ms": 7.507204998546508,
+      "p99_ms": 9.294227996579139,
+      "min_ms": 4.408799999509938,
+      "max_ms": 65.62580000172602,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 2.8004206667052736,
+      "p50_ms": 2.6531000003160443,
+      "p95_ms": 3.80343000178982,
+      "p99_ms": 5.200899003611993,
+      "min_ms": 2.05390000337502,
+      "max_ms": 7.293499998922925,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.006666666666667,
+     "frames_with_face": 0.8306666666666667,
+     "max_fps": 171.7508938742414,
+     "agreement": {
+      "precision_vs_ref": 0.8156028368794326,
+      "recall_vs_ref": 0.7093899931459904,
+      "f1_vs_ref": 0.7587976539589442,
+      "ref_faces": 1459,
+      "recall_<24px": 0.1722488038277512,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.5940246045694201,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9706314243759178,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 134,
+       "confirmed_tracks": 101,
+       "mean_visible": 4.68,
+       "median_life_s": 1.2,
+       "share_under_1s": 0.39603960396039606,
+       "ms_per_frame": 0.25510466667280224
+      },
+      "sort": {
+       "ids_issued": 167,
+       "confirmed_tracks": 124,
+       "mean_visible": 4.605333333333333,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.4838709677419355,
+       "ms_per_frame": 0.4638321333331987
+      },
+      "bytetrack": {
+       "ids_issued": 169,
+       "confirmed_tracks": 121,
+       "mean_visible": 4.962666666666666,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.47107438016528924,
+       "ms_per_frame": 0.5356618666749758
+      }
+     }
+    },
+    "YuNet @native": {
+     "end_to_end": {
+      "mean_ms": 22.42794813362222,
+      "p50_ms": 21.80374999443302,
+      "p95_ms": 28.294160003497378,
+      "p99_ms": 32.35035700243316,
+      "min_ms": 17.39369999995688,
+      "max_ms": 39.463399996748194,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 12.279207999973247,
+      "p50_ms": 11.974400000326568,
+      "p95_ms": 16.2089349971211,
+      "p99_ms": 19.111920002760595,
+      "min_ms": 8.808499995211605,
+      "max_ms": 26.444000002811663,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 8.386666666666667,
+     "frames_with_face": 0.8146666666666667,
+     "max_fps": 44.58722635000562,
+     "agreement": {
+      "precision_vs_ref": 0.6064485538169748,
+      "recall_vs_ref": 0.8766278272789582,
+      "f1_vs_ref": 0.716928251121076,
+      "ref_faces": 1459,
+      "recall_<24px": 0.7559808612440191,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.8101933216168717,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9691629955947136,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 205,
+       "confirmed_tracks": 182,
+       "mean_visible": 7.865333333333333,
+       "median_life_s": 1.06,
+       "share_under_1s": 0.4725274725274725,
+       "ms_per_frame": 0.2662110666666801
+      },
+      "sort": {
+       "ids_issued": 271,
+       "confirmed_tracks": 216,
+       "mean_visible": 7.728,
+       "median_life_s": 0.9199999999999982,
+       "share_under_1s": 0.5462962962962963,
+       "ms_per_frame": 0.6630377333300809
+      },
+      "bytetrack": {
+       "ids_issued": 262,
+       "confirmed_tracks": 209,
+       "mean_visible": 8.16,
+       "median_life_s": 0.9199999999999982,
+       "share_under_1s": 0.5215311004784688,
+       "ms_per_frame": 0.8268591999949422
+      }
+     }
+    },
+    "YuNet int8 @640": {
+     "end_to_end": {
+      "mean_ms": 25.053443600025883,
+      "p50_ms": 24.842750000971137,
+      "p95_ms": 28.077785000641597,
+      "p99_ms": 29.947712001085165,
+      "min_ms": 20.685499999672174,
+      "max_ms": 73.31089999934193,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 21.900465200073086,
+      "p50_ms": 21.73909999692114,
+      "p95_ms": 24.686055003257934,
+      "p99_ms": 26.2955590007914,
+      "min_ms": 18.06139999825973,
+      "max_ms": 30.228899995563552,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.050666666666666,
+     "frames_with_face": 0.8306666666666667,
+     "max_fps": 39.91467264799346,
+     "agreement": {
+      "precision_vs_ref": 0.8083267871170463,
+      "recall_vs_ref": 0.7052775873886223,
+      "f1_vs_ref": 0.7532942898975109,
+      "ref_faces": 1459,
+      "recall_<24px": 0.1674641148325359,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.5817223198594025,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.973568281938326,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 134,
+       "confirmed_tracks": 108,
+       "mean_visible": 4.717333333333333,
+       "median_life_s": 1.1400000000000001,
+       "share_under_1s": 0.4074074074074074,
+       "ms_per_frame": 0.1899889333290048
+      },
+      "sort": {
+       "ids_issued": 168,
+       "confirmed_tracks": 131,
+       "mean_visible": 4.64,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.48854961832061067,
+       "ms_per_frame": 0.42461320000196184
+      },
+      "bytetrack": {
+       "ids_issued": 171,
+       "confirmed_tracks": 127,
+       "mean_visible": 5.110666666666667,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.47244094488188976,
+       "ms_per_frame": 0.5528328000024582
+      }
+     }
+    },
+    "YuNet OpenCV @640": {
+     "end_to_end": {
+      "mean_ms": 9.33797999995295,
+      "p50_ms": 9.105799996177666,
+      "p95_ms": 11.783580001065273,
+      "p99_ms": 12.873864998764473,
+      "min_ms": 6.721099998685531,
+      "max_ms": 17.718499999318738,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 9.33797999995295,
+      "p50_ms": 9.105799996177666,
+      "p95_ms": 11.783580001065273,
+      "p99_ms": 12.873864998764473,
+      "min_ms": 6.721099998685531,
+      "max_ms": 17.718499999318738,
+      "n": 750
+     },
+     "fused": true,
+     "faces_per_frame_mean": 5.006666666666667,
+     "frames_with_face": 0.8306666666666667,
+     "max_fps": 107.08954185006164,
+     "agreement": {
+      "precision_vs_ref": 0.8156028368794326,
+      "recall_vs_ref": 0.7093899931459904,
+      "f1_vs_ref": 0.7587976539589442,
+      "ref_faces": 1459,
+      "recall_<24px": 0.1722488038277512,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.5940246045694201,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9706314243759178,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 134,
+       "confirmed_tracks": 101,
+       "mean_visible": 4.68,
+       "median_life_s": 1.2,
+       "share_under_1s": 0.39603960396039606,
+       "ms_per_frame": 0.18026866665847288
+      },
+      "sort": {
+       "ids_issued": 167,
+       "confirmed_tracks": 124,
+       "mean_visible": 4.605333333333333,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.4838709677419355,
+       "ms_per_frame": 0.4108503999984047
+      },
+      "bytetrack": {
+       "ids_issued": 169,
+       "confirmed_tracks": 121,
+       "mean_visible": 4.962666666666666,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.47107438016528924,
+       "ms_per_frame": 0.5420892000062546
+      }
+     }
+    },
+    "SCRFD-500M @640": {
+     "end_to_end": {
+      "mean_ms": 9.499435466597788,
+      "p50_ms": 9.006300002511125,
+      "p95_ms": 12.329050000698771,
+      "p99_ms": 15.430152001354145,
+      "min_ms": 6.855300001916476,
+      "max_ms": 102.81849999591941,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 5.871592933389668,
+      "p50_ms": 5.598300002020551,
+      "p95_ms": 7.948425001814029,
+      "p99_ms": 10.333855999560905,
+      "min_ms": 4.145399994740728,
+      "max_ms": 40.01379999681376,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 3.958666666666667,
+     "frames_with_face": 0.8306666666666667,
+     "max_fps": 105.2694134842256,
+     "agreement": {
+      "precision_vs_ref": 0.9408817635270541,
+      "recall_vs_ref": 0.6435915010281015,
+      "f1_vs_ref": 0.7643467643467644,
+      "ref_faces": 1459,
+      "recall_<24px": 0.009569377990430622,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.47451669595782076,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9794419970631424,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 63,
+       "confirmed_tracks": 61,
+       "mean_visible": 3.0813333333333333,
+       "median_life_s": 1.2,
+       "share_under_1s": 0.39344262295081966,
+       "ms_per_frame": 0.15446800000305907
+      },
+      "sort": {
+       "ids_issued": 81,
+       "confirmed_tracks": 76,
+       "mean_visible": 3.037333333333333,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.4605263157894737,
+       "ms_per_frame": 0.27852799999527633
+      },
+      "bytetrack": {
+       "ids_issued": 82,
+       "confirmed_tracks": 74,
+       "mean_visible": 3.184,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.44594594594594594,
+       "ms_per_frame": 0.36715373333815177
+      }
+     }
+    },
+    "SCRFD-500M @native": {
+     "end_to_end": {
+      "mean_ms": 27.899153066663228,
+      "p50_ms": 27.994149997539353,
+      "p95_ms": 33.10425499948906,
+      "p99_ms": 36.340853998044615,
+      "min_ms": 21.01859999675071,
+      "max_ms": 85.93539999856148,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 17.372509600099875,
+      "p50_ms": 17.432149998057866,
+      "p95_ms": 21.310979998452236,
+      "p99_ms": 23.52325199753977,
+      "min_ms": 12.87169999704929,
+      "max_ms": 26.334599999245256,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.810666666666667,
+     "frames_with_face": 0.8893333333333333,
+     "max_fps": 35.84338196971659,
+     "agreement": {
+      "precision_vs_ref": 0.8786206896551724,
+      "recall_vs_ref": 0.8732008224811515,
+      "f1_vs_ref": 0.8759023719491235,
+      "ref_faces": 1459,
+      "recall_<24px": 0.722488038277512,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.81195079086116,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9706314243759178,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 92,
+       "confirmed_tracks": 84,
+       "mean_visible": 4.013333333333334,
+       "median_life_s": 1.2,
+       "share_under_1s": 0.39285714285714285,
+       "ms_per_frame": 0.16116853332884298
+      },
+      "sort": {
+       "ids_issued": 112,
+       "confirmed_tracks": 101,
+       "mean_visible": 3.964,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.46534653465346537,
+       "ms_per_frame": 0.35004199999578606
+      },
+      "bytetrack": {
+       "ids_issued": 112,
+       "confirmed_tracks": 98,
+       "mean_visible": 4.213333333333333,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.4387755102040816,
+       "ms_per_frame": 0.4551222666632384
+      }
+     }
+    },
+    "BlazeFace short": {
+     "end_to_end": {
+      "mean_ms": 3.1035277334643374,
+      "p50_ms": 3.0860999977448955,
+      "p95_ms": 3.512764996776241,
+      "p99_ms": 4.120375003330992,
+      "min_ms": 2.52609999733977,
+      "max_ms": 6.635399993683677,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 2.0087390667273817,
+      "p50_ms": 1.9964999992225785,
+      "p95_ms": 2.309414997580461,
+      "p99_ms": 2.6451849971635966,
+      "min_ms": 1.6157999998540618,
+      "max_ms": 4.963400002452545,
+      "n": 750
+     },
+     "fused": true,
+     "faces_per_frame_mean": 0.6586666666666666,
+     "frames_with_face": 0.544,
+     "max_fps": 322.21397257621476,
+     "agreement": {
+      "precision_vs_ref": 0.7455621301775148,
+      "recall_vs_ref": 0.08636052090472926,
+      "f1_vs_ref": 0.1547911547911548,
+      "ref_faces": 1459,
+      "recall_<24px": 0.0,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.0,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.18502202643171806,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 13,
+       "confirmed_tracks": 11,
+       "mean_visible": 0.45866666666666667,
+       "median_life_s": 0.8800000000000037,
+       "share_under_1s": 0.5454545454545454,
+       "ms_per_frame": 0.05119213332848934
+      },
+      "sort": {
+       "ids_issued": 14,
+       "confirmed_tracks": 12,
+       "mean_visible": 0.456,
+       "median_life_s": 0.8600000000000019,
+       "share_under_1s": 0.5833333333333334,
+       "ms_per_frame": 0.078922400008499
+      },
+      "bytetrack": {
+       "ids_issued": 14,
+       "confirmed_tracks": 12,
+       "mean_visible": 0.5466666666666666,
+       "median_life_s": 0.8600000000000019,
+       "share_under_1s": 0.5833333333333334,
+       "ms_per_frame": 0.10470359999453649
+      }
+     }
+    },
+    "BlazeFace full": {
+     "end_to_end": {
+      "mean_ms": 5.987133733365529,
+      "p50_ms": 5.998500000714557,
+      "p95_ms": 6.7260149993671785,
+      "p99_ms": 7.343127997446572,
+      "min_ms": 5.000499993911944,
+      "max_ms": 9.345500002382323,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 4.863887733372394,
+      "p50_ms": 4.868349999014754,
+      "p95_ms": 5.525715001567732,
+      "p99_ms": 6.072055997865391,
+      "min_ms": 3.9977000051294453,
+      "max_ms": 7.485000001906883,
+      "n": 750
+     },
+     "fused": true,
+     "faces_per_frame_mean": 2.013333333333333,
+     "frames_with_face": 0.8306666666666667,
+     "max_fps": 167.02483100170755,
+     "agreement": {
+      "precision_vs_ref": 0.9743589743589743,
+      "recall_vs_ref": 0.33858807402330365,
+      "f1_vs_ref": 0.5025432349949136,
+      "ref_faces": 1459,
+      "recall_<24px": 0.0,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.005272407732864675,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.7209985315712188,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 38,
+       "confirmed_tracks": 37,
+       "mean_visible": 1.5893333333333333,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.4864864864864865,
+       "ms_per_frame": 0.10209173333714716
+      },
+      "sort": {
+       "ids_issued": 47,
+       "confirmed_tracks": 43,
+       "mean_visible": 1.5666666666666667,
+       "median_life_s": 0.8800000000000037,
+       "share_under_1s": 0.5813953488372093,
+       "ms_per_frame": 0.1659880000030777
+      },
+      "bytetrack": {
+       "ids_issued": 48,
+       "confirmed_tracks": 43,
+       "mean_visible": 1.7786666666666666,
+       "median_life_s": 0.8800000000000037,
+       "share_under_1s": 0.5813953488372093,
+       "ms_per_frame": 0.2367270666679057
+      }
+     }
+    },
+    "SCRFD-10G @640 (ResNet-class)": {
+     "end_to_end": {
+      "mean_ms": 47.68468506663339,
+      "p50_ms": 47.36379999667406,
+      "p95_ms": 51.59613999785506,
+      "p99_ms": 54.46268900122959,
+      "min_ms": 41.98840000026394,
+      "max_ms": 57.91460000182269,
+      "n": 750
+     },
+     "inference": {
+      "mean_ms": 44.43799759982115,
+      "p50_ms": 44.084100001782645,
+      "p95_ms": 48.03736999820103,
+      "p99_ms": 50.868456997486646,
+      "min_ms": 39.1174000033061,
+      "max_ms": 54.40369999996619,
+      "n": 750
+     },
+     "fused": false,
+     "faces_per_frame_mean": 5.708,
+     "frames_with_face": 0.8666666666666667,
+     "max_fps": 20.971093729624613,
+     "agreement": {
+      "precision_vs_ref": 0.8176718092566619,
+      "recall_vs_ref": 0.7991775188485264,
+      "f1_vs_ref": 0.808318890814558,
+      "ref_faces": 1459,
+      "recall_<24px": 0.15789473684210525,
+      "n_ref_<24px": 209,
+      "recall_24-64px": 0.7961335676625659,
+      "n_ref_24-64px": 569,
+      "recall_>=64px": 0.9985315712187959,
+      "n_ref_>=64px": 681
+     },
+     "trackers": {
+      "iou": {
+       "ids_issued": 92,
+       "confirmed_tracks": 88,
+       "mean_visible": 4.1306666666666665,
+       "median_life_s": 1.2,
+       "share_under_1s": 0.375,
+       "ms_per_frame": 0.1633677333399343
+      },
+      "sort": {
+       "ids_issued": 112,
+       "confirmed_tracks": 103,
+       "mean_visible": 4.084,
+       "median_life_s": 1.0,
+       "share_under_1s": 0.42718446601941745,
+       "ms_per_frame": 0.3893716000020504
+      },
+      "bytetrack": {
+       "ids_issued": 113,
+       "confirmed_tracks": 101,
+       "mean_visible": 4.365333333333333,
+       "median_life_s": 1.16,
+       "share_under_1s": 0.40594059405940597,
+       "ms_per_frame": 0.49301946666673757
+      }
+     }
+    }
+   },
+   "reference": {
+    "label": "SCRFD-10G @native (reference)",
+    "latency": {
+     "end_to_end": {
+      "mean_ms": 188.21792679998907,
+      "p50_ms": 185.90725000103703,
+      "p95_ms": 203.6189299989928,
+      "p99_ms": 215.95685199885338,
+      "min_ms": 174.20330000459217,
+      "max_ms": 229.38940000312869,
+      "n": 250
+     },
+     "inference": {
+      "mean_ms": 178.16631919992506,
+      "p50_ms": 175.9606999985408,
+      "p95_ms": 193.4217650017672,
+      "p99_ms": 204.3605209996167,
+      "min_ms": 164.81170000042766,
+      "max_ms": 219.05629999673693,
+      "n": 250
+     },
+     "fused": false
+    },
+    "frames": 250,
+    "faces_per_frame_mean": 5.836
+   },
+   "recognition_cost": {
+    "frames_sampled": 75,
+    "frames_with_faces": 61,
+    "faces_per_frame_mean": 8.466666666666667,
+    "faces_per_frame_p95": 27.599999999999994,
+    "faces_per_frame_max": 33,
+    "per_frame_ms": {
+     "arcface_r50": {
+      "mean_ms": 1343.3426311480541,
+      "p50_ms": 896.1114999983693,
+      "p95_ms": 3364.073600001575,
+      "p99_ms": 3794.6133200006443,
+      "min_ms": 165.6864000033238,
+      "max_ms": 3826.3981999989483,
+      "n": 61
+     },
+     "arcface_mbf": {
+      "mean_ms": 150.5529360662474,
+      "p50_ms": 64.93870000122115,
+      "p95_ms": 442.79220000316855,
+      "p99_ms": 488.62430000299355,
+      "min_ms": 6.005700000969227,
+      "max_ms": 488.80430000281194,
+      "n": 61
+     }
+    }
+   },
+   "grid_frame": 459
+  }
+ }
+}

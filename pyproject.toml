@@ -1,0 +1,46 @@
+[project]
+name = "facetrack"
+version = "0.1.0"
+description = "Lightweight real-time face detection and multi-face tracking: pluggable detectors (YuNet, SCRFD, MediaPipe BlazeFace), pluggable trackers (IoU, SORT, ByteTrack), and the benchmark harness that chose between them"
+requires-python = ">=3.10"
+dependencies = [
+    # 4.8 is the first release whose FaceDetectorYN decodes the 2023mar YuNet head;
+    # the ORT path below decodes it itself, but the OpenCV path is the official one.
+    "opencv-python>=4.10",
+    "onnxruntime>=1.18",
+    "numpy>=1.24",
+    # linear_sum_assignment (Hungarian) for SORT / ByteTrack and the MOT metrics.
+    "scipy>=1.10",
+    "pyyaml>=6.0",
+    "psutil>=5.9",
+]
+
+[project.optional-dependencies]
+# MediaPipe is an optional detector backend: it is large, and its wheels lag new
+# Python releases, so the core must import without it.
+mediapipe = ["mediapipe>=0.10.14"]
+youtube = ["yt-dlp>=2025.1.1", "imageio-ffmpeg>=0.5"]
+# Figure for the benchmark report (scripts/make_youtube_report.py).
+report = ["matplotlib>=3.8"]
+bench = [
+    "pycocotools>=2.0.7",
+    # Cross-check for our own CLEAR-MOT / IDF1 implementation (tests only).
+    "motmetrics>=1.4",
+    "onnx>=1.15",
+]
+# pytest 9.x crashes at session start on Python 3.10.0 (NodeId._str_cache).
+dev = ["pytest>=8.0,<9"]
+
+[project.scripts]
+facetrack-demo = "facetrack.cli.demo:main"
+
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

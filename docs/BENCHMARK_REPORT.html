@@ -1,0 +1,130 @@
+<!doctype html><html lang=en><head><meta charset=utf-8><title>Face detection and tracking: model benchmark on two videos</title>
+<style>
+@page { size: A4; margin: 13mm 14mm 12mm; }
+:root { --ink:#14161a; --muted:#5b616b; --line:#d9dce1; --accent:#2a78d6; --bg:#f4f6f9; }
+* { box-sizing: border-box; }
+body { font: 8.9pt/1.38 "Segoe UI", system-ui, sans-serif; color: var(--ink); margin: 0; }
+h1 { font-size: 16pt; margin: 0 0 1px; letter-spacing: -.01em; }
+.sub { color: var(--muted); margin: 0 0 7px; font-size: 8.6pt; }
+h2, h3 { break-after: avoid; }
+h2 { font-size: 10.4pt; margin: 9px 0 3px; color: var(--accent); }
+table, tr { break-inside: avoid; }
+p { margin: 0 0 4px; }
+ul { margin: 2px 0 4px; padding-left: 15px; } li { margin: 0 0 1.5px; }
+table { border-collapse: collapse; width: 100%; font-size: 7.7pt; margin: 3px 0 5px; }
+th, td { border-bottom: 1px solid var(--line); padding: 2px 4px; text-align: right; }
+th:first-child, td:first-child { text-align: left; }
+th { background: var(--bg); font-weight: 600; color: var(--ink); }
+th.g { text-align: center; border-bottom: 1px solid var(--line); }
+.m { color: var(--muted); }
+tr.hl td { background: #eaf2fc; } tr.ref td { color: var(--muted); font-style: italic; }
+.box { background: var(--bg); border-left: 3px solid var(--accent); padding: 5px 8px; margin: 4px 0 6px; }
+.cap { color: var(--muted); font-size: 7.6pt; margin: 0 0 4px; }
+img { width: 80%; display: block; margin: 2px auto; }
+.two { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.pb { break-before: page; }
+.no { color: #a3321f; font-weight: 600; }
+</style></head><body>
+
+<h1>Face detection and tracking: model benchmark on two real videos</h1>
+<p class=sub>FaceTrack project, Phases 1–2 · 12th Gen Intel(R) Core(TM) i7-12650H, 10 cores, ONNX Runtime / OpenCV / MediaPipe on CPU only · all numbers measured locally, except where marked proxy</p>
+
+<div class=box><b>Verdict.</b> Use <b>YuNet + ByteTrack on ONNX Runtime</b> as the default: 5.1 ms per frame at 640 px, 0.2 MB, MIT code and weights.
+The decisive lever on real footage is <b>input resolution, not model size</b>: running YuNet at native 720p found 5.8 faces per frame on the street video
+against 3.3 at 640 px, at 22 ms (both videos, median). The heavy ResNet-class detector (SCRFD-10G) costs 47 ms and still agrees less with the reference than a small model run at native resolution.
+The BlazeFace models are not usable on distant faces. ArcFace is a recognition model, so it cannot replace a detector, and run on every face every frame it is far over budget.</div>
+
+<h2>1. What was tested, and how far to trust it</h2>
+<ul>
+<li><b>Videos</b> (streamed through yt-dlp, never saved; frames kept in memory only, JPEG q95): <b>A</b> “People Walking Free Stock Footage, Royalty-F…” (Montreal Walking Tours) and <b>B</b> “The Bigger the Fandom, the Bigger the Selfie…” (OPPO India).
+Both read as 1280×720 H.264; the first 900 frames of A (30 s, 30 fps) and 750 frames of B (30 s, 25 fps). Every model received the same decoded frames.</li>
+<li><b>Models:</b> YuNet (ONNX Runtime, int8, OpenCV build), SCRFD-500M-KPS, MediaPipe BlazeFace short and full range, plus SCRFD-10G (ResNet-class). Trackers: IoU, SORT, ByteTrack with the project defaults. <b>All 9 detector configurations × 3 trackers = 27 combinations were run on each video.</b></li>
+<li><b>No human ground truth exists for these videos.</b> Speed, faces per frame and track statistics are measured. “Agreement” compares each model with a heavy reference (SCRFD-10G at native resolution, every 3rd frame, score ≥ 0.6); it is a <b>proxy</b>, not accuracy. The reference is itself imperfect and from the same model family as two of the rows, which flatters them.
+Video B is an advert whose set is covered in printed posters, so many “faces” are printed ones; detectors that fire on them are not necessarily wrong.</li>
+<li>One run on one laptop (plugged in, nothing else running), so small timing differences between models are not significant; tail latencies (p95) are noisier than medians.</li>
+</ul>
+
+<h2>2. Detector comparison</h2>
+<table>
+<tr><th rowspan=2>Model</th><th rowspan=2>ms/frame<br>median (p95)</th><th class=g colspan=3>A · street, small faces</th><th class=g colspan=3>B · selfie ad, larger faces</th><th rowspan=2>WIDER AP50<br><span class=m>(earlier test)</span></th></tr>
+<tr><th>faces/frame</th><th>F1 vs ref</th><th>recall &lt;24 px</th><th>faces/frame</th><th>F1 vs ref</th><th>recall ≥64 px</th></tr>
+<tr class="hl"><td>YuNet @640</td><td>5.1 <span class=m>(8)</span></td><td>3.3</td><td>0.63</td><td>0.25</td><td>5.0</td><td>0.76</td><td>0.97</td><td>0.487</td></tr>
+<tr><td>YuNet @native</td><td>22.4 <span class=m>(53)</span></td><td>5.8</td><td>0.81</td><td>0.73</td><td>8.4</td><td>0.72</td><td>0.97</td><td>0.654 (@1024)</td></tr>
+<tr><td>YuNet int8 @640</td><td>24.4 <span class=m>(32)</span></td><td>3.3</td><td>0.64</td><td>0.26</td><td>5.1</td><td>0.75</td><td>0.97</td><td>–</td></tr>
+<tr><td>YuNet OpenCV @640</td><td>8.2 <span class=m>(12)</span></td><td>3.3</td><td>0.63</td><td>0.25</td><td>5.0</td><td>0.76</td><td>0.97</td><td>–</td></tr>
+<tr><td>SCRFD-500M @640</td><td>7.8 <span class=m>(12)</span></td><td>3.1</td><td>0.66</td><td>0.28</td><td>4.0</td><td>0.76</td><td>0.98</td><td>0.576</td></tr>
+<tr class="hl"><td>SCRFD-500M @native</td><td>25.4 <span class=m>(33)</span></td><td>5.2</td><td>0.89</td><td>0.80</td><td>5.8</td><td>0.88</td><td>0.97</td><td>–</td></tr>
+<tr><td>BlazeFace short</td><td>3.0 <span class=m>(4)</span></td><td>0.0</td><td>0.00</td><td>0.00</td><td>0.7</td><td>0.15</td><td>0.19</td><td>0.035</td></tr>
+<tr><td>BlazeFace full</td><td>6.0 <span class=m>(7)</span></td><td>0.3</td><td>0.03</td><td>0.00</td><td>2.0</td><td>0.50</td><td>0.72</td><td>0.145</td></tr>
+<tr><td>SCRFD-10G @640 (ResNet-class)</td><td>46.6 <span class=m>(52)</span></td><td>3.9</td><td>0.79</td><td>0.47</td><td>5.7</td><td>0.81</td><td>1.00</td><td>0.709</td></tr>
+<tr class=ref><td>SCRFD-10G @native (reference)</td><td>192</td><td>5.5</td><td>–</td><td>–</td><td>5.8</td><td>–</td><td>–</td><td>–</td></tr>
+</table>
+<p class=cap>ms/frame = median of the two videos, end to end (preprocess + inference + postprocess); detectors that fuse stages are timed as one. Faces/frame counted at each model’s default score threshold. Recall columns = share of reference faces of that pixel height that the model also found (IoU ≥ 0.5).
+Blue rows = recommended default and the best native-resolution alternative (non-commercial weights).</p>
+<img src="images/youtube_benchmark.png" alt="Latency and agreement per model">
+
+<h2>3. What the numbers say</h2>
+<ul>
+<li><b>Resolution decides small-face recall.</b> On video A, 640 px YuNet finds only 25% of the reference’s faces under 24 px; native resolution finds 73% (SCRFD-500M: 28% → 80%). It costs about 4× the time but stays under the 33 ms/30 fps budget at the median.
+YuNet’s p95 at native size on A is 53 ms, so weaker CPUs should use 640 px or <code>detect every 2nd frame</code> unless faces are large (phone timings were not measured here).</li>
+<li><b>SCRFD-500M vs YuNet.</b> At native size SCRFD-500M agrees better with the reference (F1 0.89 / 0.88 vs 0.81 / 0.72) at similar cost, but that is the favoured family, and its weights are non-commercial (InsightFace). YuNet is the safe default; SCRFD is an upgrade for research use.</li>
+<li><b>int8 YuNet is slower, not faster</b> (24 ms vs 5.1 ms) on this CPU, probably because the model is so small that quantisation overhead outweighs the saved arithmetic (cause not profiled). The OpenCV build is a few ms slower than ONNX Runtime and returns the same face counts.</li>
+<li><b>BlazeFace fails here.</b> Short-range found 0.00 faces per frame on A and full-range 0.30 (reference: 5.5). Even on B’s large faces its recall is 0.19 (short) and 0.72 (full) against 0.97 for YuNet.
+They run at a fixed 128/192 px input and are designed for near faces (the short-range model for selfie distance), which matches the WIDER result in the main report. They are the fastest (3.0 ms for the short-range model) but only suit a near-camera selfie use case.</li>
+</ul>
+
+<h2>4. Tracker comparison on real footage (no identity ground truth)</h2>
+<table>
+<tr><th rowspan=2>Detector</th><th class=g colspan=3>A · street: track IDs issued (share lasting &lt;1 s)</th><th class=g colspan=3>B · selfie ad: track IDs issued (share lasting &lt;1 s)</th></tr>
+<tr><th>IoU</th><th>SORT</th><th>ByteTrack</th><th>IoU</th><th>SORT</th><th>ByteTrack</th></tr>
+<tr><td>YuNet @640</td><td>126 <span class=m>(54%)</span></td><td>152 <span class=m>(64%)</span></td><td>143 <span class=m>(61%)</span></td><td>134 <span class=m>(40%)</span></td><td>167 <span class=m>(48%)</span></td><td>169 <span class=m>(47%)</span></td></tr>
+<tr><td>YuNet @native</td><td>206 <span class=m>(60%)</span></td><td>236 <span class=m>(66%)</span></td><td>235 <span class=m>(58%)</span></td><td>205 <span class=m>(47%)</span></td><td>271 <span class=m>(55%)</span></td><td>262 <span class=m>(52%)</span></td></tr>
+<tr><td>YuNet int8 @640</td><td>124 <span class=m>(59%)</span></td><td>141 <span class=m>(64%)</span></td><td>140 <span class=m>(57%)</span></td><td>134 <span class=m>(41%)</span></td><td>168 <span class=m>(49%)</span></td><td>171 <span class=m>(47%)</span></td></tr>
+<tr><td>YuNet OpenCV @640</td><td>127 <span class=m>(54%)</span></td><td>153 <span class=m>(64%)</span></td><td>144 <span class=m>(61%)</span></td><td>134 <span class=m>(40%)</span></td><td>167 <span class=m>(48%)</span></td><td>169 <span class=m>(47%)</span></td></tr>
+<tr><td>SCRFD-500M @640</td><td>60 <span class=m>(40%)</span></td><td>63 <span class=m>(49%)</span></td><td>62 <span class=m>(42%)</span></td><td>63 <span class=m>(39%)</span></td><td>81 <span class=m>(46%)</span></td><td>82 <span class=m>(45%)</span></td></tr>
+<tr><td>SCRFD-500M @native</td><td>111 <span class=m>(52%)</span></td><td>110 <span class=m>(56%)</span></td><td>105 <span class=m>(49%)</span></td><td>92 <span class=m>(39%)</span></td><td>112 <span class=m>(47%)</span></td><td>112 <span class=m>(44%)</span></td></tr>
+<tr><td>BlazeFace short</td><td>1 <span class=m>(0%)</span></td><td>1 <span class=m>(0%)</span></td><td>1 <span class=m>(0%)</span></td><td>13 <span class=m>(55%)</span></td><td>14 <span class=m>(58%)</span></td><td>14 <span class=m>(58%)</span></td></tr>
+<tr><td>BlazeFace full</td><td>23 <span class=m>(92%)</span></td><td>21 <span class=m>(91%)</span></td><td>19 <span class=m>(67%)</span></td><td>38 <span class=m>(49%)</span></td><td>47 <span class=m>(58%)</span></td><td>48 <span class=m>(58%)</span></td></tr>
+<tr><td>SCRFD-10G @640 (ResNet-class)</td><td>87 <span class=m>(47%)</span></td><td>87 <span class=m>(57%)</span></td><td>84 <span class=m>(46%)</span></td><td>92 <span class=m>(38%)</span></td><td>112 <span class=m>(43%)</span></td><td>113 <span class=m>(41%)</span></td></tr>
+</table>
+<p class=cap>All 27 detector × tracker combinations per video are shown. Tracker cost was at most 0.86 ms per frame in every run, negligible next to detection. With no labelled identities, “IDs issued” mixes real new people with fragments and false tracks, so fewer is not automatically better.</p>
+<ul>
+<li>No tracker is consistently lowest. With YuNet, IoU issues the fewest IDs but also keeps the fewest faces on screen (@640 on A: 3.0 confirmed faces on average vs 3.7 for ByteTrack), while with SCRFD-500M @native, SCRFD-10G and BlazeFace full on A, ByteTrack issues the fewest. This does <b>not</b> overturn the controlled result in the main report (48 synthetic clips with exact identities, where ByteTrack gave the fewest fragments and false tracks): here we can only say the differences are small and detector-dependent, not which tracker is correct.</li>
+<li>For the YuNet rows, 40–66% of confirmed tracks last under a second. On A the likely cause is small faces flickering around the threshold at native resolution, which pushes IDs issued from ~143 to ~235. Native-resolution use needs a stricter confirm threshold or a minimum face size before a track is announced.</li>
+</ul>
+
+<h2>5. Why the suggested ResNet, ArcFace and U-Net models were not useful here</h2>
+<table>
+<tr><th>Suggested model</th><th>What it actually is</th><th>What we measured</th><th>Verdict</th></tr>
+<tr><td><b>ResNet</b></td><td style="text-align:left">An image-classification backbone, not a detector. The nearest real face detector is SCRFD-10G (ResNet-style, 16 MB).</td>
+<td style="text-align:left">Median 47 ms per frame at 640 px (≈21 FPS, over the 33 ms budget), 0.2 MB YuNet takes 5.1 ms. On WIDER FACE its AP50 is 0.709 vs 0.576 for SCRFD-500M at the same 640 px.</td>
+<td style="text-align:left"><span class=no>Too slow for the gain.</span> More accurate at 640 px, but a small model at native resolution is both faster and agrees better on small faces (F1 0.89 / 0.88 vs 0.79 / 0.81). Non-commercial weights.</td></tr>
+<tr><td><b>ArcFace</b></td><td style="text-align:left">A face-<i>recognition</i> embedder: needs an already-detected, aligned 112×112 face. It cannot find faces and says nothing about tracking.</td>
+<td style="text-align:left">See table below: on the faces actually present in these videos it costs hundreds of ms to seconds per frame.</td>
+<td style="text-align:left"><span class=no>Wrong job, and out of scope.</span> Persistent identity is Phase 3; a Track ID is not a Person ID. Useful later, once per track, not per frame.</td></tr>
+<tr><td><b>U-Net</b></td><td style="text-align:left">A segmentation architecture that outputs per-pixel masks, not face boxes or tracks.</td>
+<td style="text-align:left"><b>Not run.</b> No pretrained face model exists to benchmark; training one would need labelled data and still needs box extraction and instance splitting for touching faces.</td>
+<td style="text-align:left"><span class=no>Not applicable.</span> Detectors already output boxes and keypoints directly, far cheaper.</td></tr>
+</table>
+
+<h3 style="font-size:9.4pt;margin:6px 0 2px">Cost of running ArcFace on the faces found in these videos (measured)</h3>
+<table>
+<tr><th>Model</th><th>Size</th><th>ms per face<br>(112×112)</th><th>A: ms per frame<br>median / p95</th><th>B: ms per frame<br>median / p95</th></tr>
+<tr><td>ArcFace w600k_r50 (ResNet-50)</td><td>166 MB</td><td>124.7</td><td>914 / 1239</td><td>896 / 3364</td></tr>
+<tr><td>ArcFace w600k_mbf (MobileFaceNet)</td><td>13 MB</td><td>7.4</td><td>79 / 210</td><td>65 / 443</td></tr>
+</table>
+<p class=cap>Sampled every 10th frame (90 frames of A, 75 of B); one embedding per YuNet face (score ≥ 0.6), batch size 1. A has 5.8 faces per frame on average (max 11); B has 8.5 (max 33, p95 28).
+Latency only: crops were not aligned, so no recognition quality is claimed. Budget: 33 ms per frame at 30 fps.</p>
+<ul>
+<li>Per frame, the ResNet-50 embedder is <b>27× over budget</b> on A and spikes to 3.4 s on B’s crowded frames. Even the 13 MB MobileFaceNet variant takes 79 / 65 ms per frame, still over budget when run every frame.</li>
+<li>Tracking removes that cost: embed once per <i>confirmed track</i>, off the frame path. A had 84 confirmed tracks in 30 s (≈2.8 per second, mostly short fragments, see §4), i.e. ≈21 ms of MobileFaceNet work per second of video. That is why the Phase 3 interface in <code>identity.py</code> hangs off track events and does not run per frame.</li>
+</ul>
+
+<h2>6. Recommendation and limits</h2>
+<ul>
+<li><b>Ship:</b> YuNet (ONNX Runtime) + ByteTrack, 640 px by default, native resolution when faces are small or far, <code>detect every 2nd frame</code> on weak devices. Re-check SCRFD-500M only if a commercial licence for InsightFace weights is obtained.</li>
+<li><b>Do not pursue</b> ResNet-class detectors, BlazeFace (for distant faces), or U-Net for Phases 1–2. Keep ArcFace-class models for Phase 3, once per track.</li>
+<li><b>Limits:</b> two clips, 30 s each, one machine, no human labels (agreement is a proxy and favours the reference’s own family); scene cuts are not separated from tracking behaviour in the track counts. Mobile-device and in-browser timings on these clips were not measured here; the browser app was verified to play and track a streamed YouTube link end to end (24.7 FPS processed in headless Chrome, WASM).</li>
+<li><b>Reproduce:</b> <code>python scripts/bench_youtube.py URL [URL…]</code>, then <code>python scripts/build_benchmark_report.py</code>. Raw results: <code>results/youtube/summary.json</code>. The frame grids written beside it come from third-party videos and are kept local, not redistributed.</li>
+</ul>
+</body></html>

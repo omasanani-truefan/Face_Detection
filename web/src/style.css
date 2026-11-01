@@ -1,0 +1,62 @@
+:root {
+  --bg: #f6f7f9;
+  --panel: #ffffff;
+  --text: #16181d;
+  --muted: #5d6470;
+  --line: #dde1e7;
+  --accent: #2563eb;
+  --accent-text: #ffffff;
+  --danger: #b42318;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1115;
+    --panel: #171a21;
+    --text: #e8eaee;
+    --muted: #9aa3b0;
+    --line: #2a2f3a;
+    --accent: #5b8cff;
+    --accent-text: #0b0d12;
+    --danger: #ff7a6b;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--text); font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+header { padding: 16px 16px 4px; }
+h1 { margin: 0; font-size: 20px; }
+h2 { font-size: 13px; text-transform: uppercase; letter-spacing: .04em; color: var(--muted); margin: 16px 0 6px; }
+.sub { margin: 2px 0 0; color: var(--muted); }
+main { display: grid; gap: 16px; padding: 12px 16px 24px; grid-template-columns: 300px minmax(0, 1fr) 280px; align-items: start; }
+@media (max-width: 1100px) { main { grid-template-columns: 1fr; } }
+section { min-width: 0; }
+.controls, .side { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 12px; }
+.tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; margin-bottom: 10px; }
+.tabs button[aria-selected="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+.panel { margin-bottom: 10px; }
+.row { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+button, select { font: inherit; padding: 6px 10px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--text); cursor: pointer; }
+button:disabled { opacity: .45; cursor: default; }
+select { width: 100%; min-width: 0; text-overflow: ellipsis; }
+.row select { width: auto; flex: 1; }
+.yt input { flex: 1; min-width: 0; font: inherit; padding: 6px 8px; border-radius: 7px; border: 1px solid var(--line); background: var(--panel); color: var(--text); }
+.hint { margin: 6px 0 0; font-size: 12px; color: var(--muted); }
+.file { display: block; border: 1px dashed var(--line); border-radius: 8px; padding: 10px; cursor: pointer; color: var(--muted); }
+.file input { display: block; margin-bottom: 6px; max-width: 100%; }
+/* Fieldsets default to min-width: min-content, which lets long option labels overflow. */
+fieldset { border: 1px solid var(--line); border-radius: 8px; padding: 8px 10px 10px; margin: 0; display: grid; gap: 8px; min-width: 0; }
+legend { color: var(--muted); font-size: 13px; padding: 0 4px; }
+fieldset label { display: grid; gap: 2px; font-size: 13px; color: var(--muted); }
+fieldset label.check { display: flex; gap: 6px; align-items: center; }
+.viewport { position: relative; background: #000; border-radius: 10px; overflow: hidden; aspect-ratio: 16 / 9; display: grid; place-items: center; }
+.viewport video, .viewport canvas { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+.placeholder { color: #c9ced6; padding: 16px; text-align: center; position: relative; }
+.status { min-height: 1.4em; color: var(--muted); margin: 8px 2px 0; }
+.status.error { color: var(--danger); }
+.stats { display: grid; grid-template-columns: auto 1fr; gap: 3px 10px; margin: 0; font-variant-numeric: tabular-nums; font-size: 13px; }
+.stats dt { color: var(--muted); }
+.stats dd { margin: 0; text-align: right; overflow-wrap: anywhere; }
+.events { list-style: none; margin: 0; padding: 0; max-height: 260px; overflow: auto; font-size: 12.5px; font-variant-numeric: tabular-nums; }
+.events li { padding: 3px 0; border-bottom: 1px solid var(--line); display: flex; gap: 8px; }
+.events .t { color: var(--muted); min-width: 52px; }
+.events .dot { width: 9px; height: 9px; border-radius: 50%; margin-top: 5px; flex: none; }

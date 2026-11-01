@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FaceTrack Bench</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>FaceTrack browser benchmark</h1>
+      <p class="sub">Runs every detector backend on the same frames in a Web Worker and reports latency measured in this browser on this device.</p>
+    </header>
+    <main style="grid-template-columns: 1fr">
+      <section class="side">
+        <div class="row"><button id="run">Run benchmark</button></div>
+        <p class="status" id="status"></p>
+        <pre id="out" style="white-space: pre-wrap; font-size: 12px"></pre>
+      </section>
+    </main>
+    <script type="module" src="/src/bench.ts"></script>
+  </body>
+</html>

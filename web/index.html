@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FaceTrack</title>
+    <link rel="icon" href="data:," />
+    <link rel="stylesheet" href="/src/style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>FaceTrack</h1>
+      <p class="sub">On-device face detection and temporary tracking. Frames never leave this browser.</p>
+    </header>
+
+    <main>
+      <section class="controls" aria-label="Input and pipeline settings">
+        <div class="tabs" role="tablist">
+          <button role="tab" id="tab-video" aria-selected="true">Uploaded video</button>
+          <button role="tab" id="tab-camera" aria-selected="false">Live camera</button>
+        </div>
+
+        <div id="panel-video" class="panel">
+          <label class="file">
+            <input type="file" id="file" accept="video/mp4,video/quicktime,video/x-msvideo,video/webm,.mp4,.mov,.avi,.webm,.mkv" />
+            <span>Choose a video (MP4, MOV, WebM; AVI where the browser can decode it)</span>
+          </label>
+          <div class="row yt">
+            <input type="url" id="yt-url" placeholder="…or paste a YouTube link" aria-label="YouTube link" autocomplete="off" spellcheck="false" />
+            <button id="yt-load">Load link</button>
+          </div>
+          <p class="hint">Links are streamed through this local server and played as they arrive; nothing is saved. Needs yt-dlp (see README).</p>
+          <div class="row">
+            <button id="play" disabled>Play</button>
+            <button id="pause" disabled>Pause</button>
+            <button id="restart" disabled>Restart</button>
+            <button id="stop" disabled>Stop</button>
+          </div>
+        </div>
+
+        <div id="panel-camera" class="panel" hidden>
+          <div class="row">
+            <select id="camera-select" aria-label="Camera"><option value="">Default camera</option></select>
+            <button id="cam-start">Start camera</button>
+            <button id="cam-stop" disabled>Stop camera</button>
+          </div>
+        </div>
+
+        <fieldset>
+          <legend>Pipeline</legend>
+          <label>Detector
+            <select id="detector">
+              <option value="yunet" selected>YuNet (OpenCV Zoo, MIT)</option>
+              <option value="mediapipe_full">MediaPipe BlazeFace full-range</option>
+              <option value="mediapipe_short">MediaPipe BlazeFace short-range (selfie distance)</option>
+              <option value="scrfd_500m_kps">SCRFD-500M-KPS (non-commercial weights)</option>
+            </select>
+          </label>
+          <label>Input size
+            <select id="input-size">
+              <option value="320">320 px (fastest, near faces)</option>
+              <option value="640" selected>640 px</option>
+              <option value="native">native (far faces)</option>
+            </select>
+          </label>
+          <label>Tracker
+            <select id="tracker">
+              <option value="bytetrack" selected>ByteTrack</option>
+              <option value="sort">SORT</option>
+              <option value="iou">IoU</option>
+            </select>
+          </label>
+          <label>Accelerator
+            <select id="execution">
+              <option value="auto" selected>Auto (measure, keep faster)</option>
+              <option value="webgpu">WebGPU / GPU</option>
+              <option value="wasm">WASM / CPU</option>
+            </select>
+          </label>
+          <label>Detect every
+            <select id="detect-every">
+              <option value="1" selected>frame</option>
+              <option value="2">2nd frame</option>
+              <option value="3">3rd frame</option>
+            </select>
+          </label>
+          <label class="check"><input type="checkbox" id="show-raw" /> raw detections</label>
+        </fieldset>
+      </section>
+
+      <section class="stage" aria-label="Video">
+        <div class="viewport" id="viewport">
+          <video id="video" muted playsinline></video>
+          <canvas id="overlay"></canvas>
+          <div class="placeholder" id="placeholder">Choose a video to start, or switch to the live camera.</div>
+        </div>
+        <p class="status" id="status" role="status"></p>
+      </section>
+
+      <section class="side">
+        <h2>Performance</h2>
+        <dl class="stats" id="stats"></dl>
+        <h2>Track events</h2>
+        <ol class="events" id="events"></ol>
+        <div class="row">
+          <button id="export" disabled>Export results (JSONL)</button>
+        </div>
+      </section>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

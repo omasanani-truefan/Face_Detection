@@ -1,0 +1,28 @@
+# Default runtime configuration for the demo and pipeline.
+# Every value here can be overridden on the command line (see `facetrack-demo --help`).
+
+detector:
+  name: yunet            # yunet | yunet_int8 | yunet_cv | scrfd_500m_kps | mediapipe_short | mediapipe_full
+  # Detector-side floor. Keep it at or below tracker.low_det_threshold when using
+  # ByteTrack, otherwise its second (low-score) association stage never sees anything.
+  score_threshold: 0.3
+  nms_threshold: 0.3
+  # Longer side of the model input in pixels; 0 = native frame size. Lower is faster
+  # but loses small (distant) faces -- see docs/REPORT.md for the measured trade-off.
+  input_long_side: 640
+  num_threads: 0         # 0 = runtime default (ONNX Runtime: physical cores)
+
+pipeline:
+  detect_every: 1        # run the detector every Nth frame; tracker predicts in between
+
+tracker:
+  name: bytetrack        # iou | sort | bytetrack
+  det_threshold: 0.6     # high-score bucket; also the minimum to start a track
+  low_det_threshold: 0.3 # ByteTrack only: may extend an existing track, never start one
+  min_hits: 3            # observations before a track is confirmed (announced)
+  tentative_timeout_ms: 300
+  max_lost_ms: 1000      # grace period for occlusion / missed detections before track_ended
+  iou_threshold: 0.3
+  low_iou_threshold: 0.5
+  center_distance_threshold: 0.6
+  ref_frame_ms: 33.333

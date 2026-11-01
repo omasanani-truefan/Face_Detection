@@ -1,0 +1,25 @@
+{
+  "name": "facetrack-web",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "On-device browser face detection + tracking (video upload first, live camera second)",
+  "scripts": {
+    "prepare-assets": "node scripts/copy-assets.mjs",
+    "dev": "npm run prepare-assets && vite",
+    "build": "npm run prepare-assets && tsc --noEmit && vite build",
+    "preview": "vite preview",
+    "test": "node --experimental-strip-types --test tests/*.test.ts",
+    "bench:browser": "node scripts/browser-bench.mjs",
+    "test:e2e": "node scripts/app-smoke.mjs"
+  },
+  "dependencies": {
+    "@mediapipe/tasks-vision": "1.1.1",
+    "onnxruntime-web": "1.30.0"
+  },
+  "devDependencies": {
+    "puppeteer-core": "25.14.0",
+    "typescript": "6.0.3",
+    "vite": "8.3.4"
+  }
+}
