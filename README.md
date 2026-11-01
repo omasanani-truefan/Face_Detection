@@ -42,6 +42,10 @@ python scripts/build_benchmark_report.py                # rewrites BENCHMARK.md 
 cd web && npm install && npm run dev                    # http://localhost:5173
 ```
 
+`python scripts/check_setup.py` tells you what is missing on your machine and how to fix it. You can also open this
+folder in [Claude Code](https://claude.com/claude-code) and ask it to set the project up: `CLAUDE.md` gives it the steps,
+the known problems and the rules for this repo.
+
 **If YouTube answers "Sign in to confirm you're not a bot"** (it does this to automated lookups from
 some networks, especially after many lookups), tell yt-dlp to use your own browser's login, then
 run the same command again: `FACETRACK_YT_COOKIES_BROWSER=chrome` (PowerShell: `$env:FACETRACK_YT_COOKIES_BROWSER="chrome"`),
